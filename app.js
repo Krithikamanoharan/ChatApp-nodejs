@@ -22,11 +22,11 @@ app.set('view engine','ejs'); //telling the app that the view engine templates a
 
 
 appController(app); //in todoController.js, it is a function that takes an argument.
-const PORT=5000||process.env.PORT;
+const PORT=process.env.PORT||5000;
 // app.listen(PORT);//listening on port 5000 for rquests
 console.log("listening on port 5000 for requests");
 
-var io=socketIO.listen(app.listen(PORT));
+var io=socketIO.listen(app.listen(PORT,"0.0.0.0"));
 
 io.on('connection', (socket) => {
   console.log('client connected');
